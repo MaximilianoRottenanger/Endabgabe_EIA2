@@ -39,7 +39,6 @@ function handleLoad(): void {
     update();
 }
 
-// 🟢 Funktion: Setzt alle Einstellungen zurück
 function resetSettings(rocketSettings: any): void {
     const rocketNameInput = document.querySelector<HTMLInputElement>("#rocketName")!;
     const explosionSizeInput = document.querySelector<HTMLInputElement>("#explosionSize")!;
