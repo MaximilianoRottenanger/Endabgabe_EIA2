@@ -1,21 +1,18 @@
-/* Reset für Standard-Abstände */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Grundlayout */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     display: flex;
     flex-direction: column;
-    height: 100vh; /* 100% der Bildschirmhöhe */
+    height: 100vh; 
     align-items: center;
 }
 
-/* Überschrift */
 h1 {
     text-align: center;
     margin: 10px 0;
@@ -23,25 +20,22 @@ h1 {
     color: #333;
 }
 
-/* Hauptcontainer */
 .container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     width: 95%;
     max-width: 1200px;
-    height: 80vh; /* 80% der Bildschirmhöhe */
+    height: 80vh; 
     gap: 20px;
 }
 
-/* Werkstatt-Container */
 #workshop-container {
     display: flex;
     flex-direction: column;
-    width: 350px; /* Breiter gemacht, damit Buttons nebeneinander passen */
+    width: 350px; 
 }
 
-/* Werkstatt (Einstellungen) */
 #workshop {
     width: 100%;
     height: 100%;
@@ -54,7 +48,6 @@ h1 {
     justify-content: space-between;
 }
 
-/* Werkstatt-Header (Werkstatt-Überschrift & Zurücksetzen-Button) */
 .workshop-header {
     display: flex;
     justify-content: space-between;
@@ -62,7 +55,6 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* Zurücksetzen-Button */
 #resetButton {
     padding: 8px 12px;
     font-size: 0.9rem;
@@ -78,7 +70,6 @@ h1 {
     background-color: #ffad33;
 }
 
-/* Eingaben */
 form label {
     display: block;
     margin-top: 10px;
@@ -96,7 +87,6 @@ input[type="range"] {
     border-radius: 5px;
 }
 
-/* Radio-Buttons */
 fieldset {
     margin-top: 15px;
     padding: 10px;
@@ -109,7 +99,6 @@ legend {
     color: #555;
 }
 
-/* Buttons in der Werkstatt */
 .button-container {
     display: flex;
     justify-content: space-between;
@@ -143,7 +132,6 @@ button {
     background-color: #ff6666;
 }
 
-/* Canvas */
 #canvasContainer {
     flex-grow: 1;
     display: flex;
@@ -160,7 +148,6 @@ button {
     max-height: 100%;
 }
 
-/* Bereich für gespeicherte Raketen (ganze Breite unter dem Canvas) */
 #savings {
     width: 95%;
     max-width: 1200px;
@@ -174,24 +161,23 @@ button {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
-    gap: 5px; /* Weniger Abstand zwischen Buttons */
-    overflow-x: auto;  /* Falls viele Elemente gespeichert werden */
+    gap: 5px; 
+    overflow-x: auto;  
     margin-top: 10px;
 }
 
-/* 🔹 Styling für gespeicherte Raketen-Buttons (kleiner) */
 .saved-rocket-button {
-    padding: 4px 6px;  /* Weniger Padding für kleinere Buttons */
-    font-size: 0.75rem;  /* Kleinere Schrift */
+    padding: 4px 6px;  
+    font-size: 0.75rem;  
     border: none;
     background-color: #4caf50;
     color: white;
     cursor: pointer;
     border-radius: 5px;
     transition: background 0.3s ease;
-    white-space: nowrap; /* Verhindert Umbrüche */
-    min-width: 70px; /* Kleinere Breite */
-    max-width: 110px; /* Maximale Breite */
+    white-space: nowrap; 
+    min-width: 70px; 
+    max-width: 110px; 
     text-align: center;
 }
 

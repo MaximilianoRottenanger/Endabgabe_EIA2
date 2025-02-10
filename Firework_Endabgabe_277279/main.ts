@@ -31,13 +31,13 @@ function handleLoad(): void {
     explosionSizeInput.addEventListener("input", () => activeRocketSettings.radius = parseInt(explosionSizeInput.value));
     particleColorInput.addEventListener("input", () => {
         activeRocketSettings.color = particleColorInput.value;
-        console.log(`🎨 Farbe geändert: ${activeRocketSettings.color}`);
+        console.log(`Farbe geändert: ${activeRocketSettings.color}`);
     });
 
     explosionShapeInputs.forEach(input => input.addEventListener("change", () => {
         if (input.checked) {
             activeRocketSettings.shape = input.value;
-            console.log(`🔺 Form geändert: ${activeRocketSettings.shape}`);
+            console.log(`Form geändert: ${activeRocketSettings.shape}`);
         }
     }));
 
@@ -63,12 +63,12 @@ function resetSettings(): void {
     particleColorInput.value = "#ff0000";
     explosionShapeInputs[0].checked = true;
 
-    console.log("🟢 Einstellungen zurückgesetzt.");
+    console.log("Einstellungen zurückgesetzt.");
 }
 
 async function saveRocket(rocket: any): Promise<void> {
     if (!rocket.name.trim()) {
-        console.warn("⚠️ Kein Name eingegeben. Rakete wird nicht gespeichert.");
+        console.warn("Kein Name eingegeben. Rakete wird nicht gespeichert.");
         return;
     }
 
@@ -82,10 +82,10 @@ async function saveRocket(rocket: any): Promise<void> {
 
         await fetch(url + "?" + query.toString(), { method: "GET" });
 
-        console.log(`💾 Rakete gespeichert: ${JSON.stringify(rocket)}`);
+        console.log(`Rakete gespeichert: ${JSON.stringify(rocket)}`);
         loadSavedRockets();
     } catch (error) {
-        console.error("❌ Fehler beim Speichern:", error);
+        console.error("Fehler beim Speichern:", error);
     }
 }
 
@@ -103,7 +103,7 @@ async function loadSavedRockets(): Promise<void> {
         let data = JSON.parse(responseText);
 
         if (data.status !== "success" || !data.data) {
-            console.warn("⚠️ Keine gespeicherten Raketen gefunden.");
+            console.warn("Keine gespeicherten Raketen gefunden.");
             return;
         }
 
@@ -115,7 +115,7 @@ async function loadSavedRockets(): Promise<void> {
         });
 
     } catch (error) {
-        console.error("❌ Fehler beim Laden der gespeicherten Raketen:", error);
+        console.error("Fehler beim Laden der gespeicherten Raketen:", error);
     }
 }
 
@@ -136,8 +136,8 @@ function addRocketButton(rocket: any): void {
 function loadRocketSettings(rocket: any): void {
     activeRocketSettings = { ...rocket };
 
-    console.log(`🎆 Raketenprofil "${rocket.name}" erfolgreich geladen.`);
-    console.log(`🚀 Geladene Werte:`, activeRocketSettings);
+    console.log(`Raketenprofil "${rocket.name}" erfolgreich geladen.`);
+    console.log(`Geladene Werte:`, activeRocketSettings);
 
     document.querySelector<HTMLInputElement>("#rocketName")!.value = rocket.name;
     document.querySelector<HTMLInputElement>("#explosionSize")!.value = rocket.radius.toString();
@@ -157,7 +157,7 @@ function handleCanvasClick(event: MouseEvent): void {
     const x = (event.clientX - rect.left) * scaleX;
     const y = (event.clientY - rect.top) * scaleY;
 
-    console.log(`🔥 Explosion bei (${x}, ${y}) mit Farbe ${activeRocketSettings.color}`);
+    console.log(`Explosion bei (${x}, ${y}) mit Farbe ${activeRocketSettings.color}`);
     fireworks.push(new Firework(x, y, activeRocketSettings.radius, activeRocketSettings.shape, activeRocketSettings.color));
 }
 
@@ -173,7 +173,6 @@ async function deleteRocket(): Promise<void> {
     try {
         const url = "https://7c8644f9-f81d-49cd-980b-1883574694b6.fr.bw-cloud-instance.org/mro41572/mingidb.php";
 
-        // 🔍 Datenbank nach gespeicherten Raketen durchsuchen
         let query: URLSearchParams = new URLSearchParams();
         query.set("command", "find");
         query.set("collection", "rockets");
@@ -184,15 +183,14 @@ async function deleteRocket(): Promise<void> {
         let data = JSON.parse(responseText);
 
         if (data.status !== "success" || !data.data) {
-            console.warn("⚠️ Keine gespeicherten Raketen gefunden.");
+            console.warn("Keine gespeicherten Raketen gefunden.");
             return;
         }
 
-        // 🔍 Den letzten gespeicherten Raketen-Button identifizieren
         const savingsDiv = document.querySelector<HTMLDivElement>("#savings")!;
         const lastButton = savingsDiv.lastChild as HTMLButtonElement;
         if (!lastButton) {
-            console.warn("⚠️ Kein gespeicherter Raketen-Button gefunden.");
+            console.warn("Kein gespeicherter Raketen-Button gefunden.");
             return;
         }
 
@@ -202,11 +200,10 @@ async function deleteRocket(): Promise<void> {
         });
 
         if (!rocketId) {
-            console.warn("⚠️ Keine passende Rakete in der Datenbank gefunden.");
+            console.warn("Keine passende Rakete in der Datenbank gefunden.");
             return;
         }
 
-        // 🗑️ Rakete aus der Datenbank löschen
         let deleteQuery: URLSearchParams = new URLSearchParams();
         deleteQuery.set("command", "delete");
         deleteQuery.set("collection", "rockets");
@@ -214,14 +211,12 @@ async function deleteRocket(): Promise<void> {
 
         await fetch(url + "?" + deleteQuery.toString(), { method: "GET" });
 
-        console.log(`✅ Rakete "${lastButton.textContent}" erfolgreich gelöscht.`);
+        console.log(`Rakete "${lastButton.textContent}" erfolgreich gelöscht.`);
 
-        // 🗑️ Rakete aus der UI entfernen
         savingsDiv.removeChild(lastButton);
 
-        // 🔄 Gespeicherte Raketen neu laden
         loadSavedRockets();
     } catch (error) {
-        console.error("❌ Fehler beim Löschen der Rakete:", error);
+        console.error("Fehler beim Löschen der Rakete:", error);
     }
 }
