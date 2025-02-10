@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "outDir": "./",  
+    "strict": true,
+    "sourceMap": true,
+    "removeComments": false
+  },
+  "include": ["./**/*.ts"],  /* Sucht rekursiv ALLE .ts-Dateien im gesamten Projekt */
+  "exclude": ["node_modules"]  
+}

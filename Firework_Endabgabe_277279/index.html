@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Firework Engine</title>
+    <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <h1>Virtual Firework Engine</h1>
+
+    <div class="container">
+        <div id="workshop-container">
+            <div id="workshop">
+                <div class="workshop-header">
+                    <h2>Werkstatt</h2>
+                    <button id="resetButton">Zurücksetzen</button>
+                </div>
+
+                <form id="rocketForm">
+                    <label for="rocketName">Name:</label>
+                    <input type="text" id="rocketName" name="name" placeholder="z.B. Red Dragon...">
+
+                    <label for="explosionSize">Explosionsgröße:</label>
+                    <input type="range" id="explosionSize" name="explosionSize" min="25" max="50">
+
+                    <label for="particleColor">Farbe:</label>
+                    <input type="color" id="particleColor" name="color">
+
+                    <fieldset>
+                        <legend>Partikelform:</legend>
+                        <label><input type="radio" name="form" value="circle" checked> Kreis</label>
+                        <label><input type="radio" name="form" value="triangle"> Dreieck</label>
+                        <label><input type="radio" name="form" value="rectangle"> Rechteck</label>
+                    </fieldset>
+
+                    <div class="button-container">
+                        <button type="button" id="save">Speichern</button>
+                        <button type="button" id="delete">Löschen</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="canvasContainer">
+            <canvas id="canvas" width="800" height="600"></canvas>
+        </div>
+    </div>
+
+    <div id="savings">
+        <p>Deine gespeicherten Raketen</p>
+    </div>
+</body>
+
+</html>
